@@ -1,0 +1,25 @@
+name: Protocol Sync
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Configure Protocol Identity
+        run: |
+          git config user.name "GTAS-Protocol"
+          git config user.email "noreply@gtas-protocol.org"
+
+      - name: Verify Clean State
+        run: |
+          git log -1 --format="Author: %an <%ae>"
