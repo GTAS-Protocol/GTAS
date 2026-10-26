@@ -20,7 +20,6 @@ def test_context_isolation_enforcement():
         lambda_coeff=0.05
     )
     
-    # Test domain validation via evaluate_anchor or direct domain check if supported
     assert evaluate_anchor(anchor_a, "urn:gtas:domain:alpha") is True
     assert evaluate_anchor(anchor_a, "urn:gtas:domain:beta") is False
 
@@ -32,9 +31,9 @@ def test_bayesian_decay():
         lambda_coeff=0.1
     )
     
-    initial_gtq = anchor.get_current_gtq()
+    initial_gtq = anchor.compute_current_gtq()
     time.sleep(0.1)
-    decayed_gtq = anchor.get_current_gtq()
+    decayed_gtq = anchor.compute_current_gtq()
     
     assert decayed_gtq <= initial_gtq
 
@@ -46,10 +45,8 @@ def test_evaluate_anchor_logic():
         lambda_coeff=0.05
     )
     
-    # Valid evaluation within matching domain
     result = evaluate_anchor(anchor, target_domain="urn:gtas:domain:eval")
     assert result is True
     
-    # Failed evaluation due to domain mismatch
     result_mismatch = evaluate_anchor(anchor, target_domain="urn:gtas:domain:wrong")
     assert result_mismatch is False
