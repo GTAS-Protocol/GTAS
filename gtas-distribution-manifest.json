@@ -1,0 +1,15 @@
+{
+  "protocol": "Ground Truth Anchoring Standard (GTAS)",
+  "version": "1.0.0-RC1",
+  "status": "Open Standards Request for Comments (Public Domain Utility)",
+  "repository": "https://github.com/GTAS-Protocol/GTAS",
+  "commit_checkpoint": "25956ec",
+  "kernel_specs": [
+    "RFC-0001 (ZK-PoP & Epistemic Anchoring)",
+    "RFC-0002 (Non-Transitive Trust Domains)",
+    "RFC-0003 (Bayesian Decay Math)",
+    "RFC-0004 (Post-Quantum Cryptographic Migration)"
+  ],
+  "verification_sdk": "sdk/verifier.py (BLAKE2b 128-char hex hashing)",
+  "ci_status": "Passing (PyTest & Protocol Sync Workflows Validated)"
+}
